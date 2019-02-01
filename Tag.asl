@@ -18,6 +18,14 @@ init {
 		print("Tag.asl: detected version v1.1");
 	} else {
 		print("Tag.asl: unknown module size " + Size.ToString());
+		MessageBox.Show(timer.Form,
+			"Tag autosplitter startup failure:\n\n"
+			+ "I could not recognize what version of the game you are running.\n"
+			+ "Please talk to Altafen.\n\n"
+			+ "Important number: " + Size.ToString(),
+			"Tag autosplitter startup failure",
+			MessageBoxButtons.OK,
+			MessageBoxIcon.Error);
 	}
 }
 
