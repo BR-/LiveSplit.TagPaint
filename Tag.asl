@@ -1,11 +1,13 @@
 state("Tag", "IGF Professional 2008") {
-	int NextLevelNumber: "Tag.exe", 0x16C088, 0x40;
-	int StartGame: "Tag.exe", 0x16C094, 0x14;
+	int NextLevelNumber : 0x16C088, 0x40;
+	int StartGame : 0x16C094, 0x14;
+	byte Loading : 0x16C05C, 0x5C;
 }
 
 state("Tag", "v1.1") {
-	int NextLevelNumber: "Tag.exe", 0x16D0E8, 0x40;
-	int StartGame: "Tag.exe", 0x16D0F4, 0x14;
+	int NextLevelNumber : 0x16D0E8, 0x40;
+	int StartGame : 0x16D0F4, 0x14;
+	byte Loading : 0x16D0BC, 0x5C;
 }
 
 init {
@@ -39,4 +41,8 @@ start {
 
 split {
 	return current.NextLevelNumber != 0 && old.NextLevelNumber != current.NextLevelNumber;
+}
+
+isLoading {
+	return current.Loading == 1;
 }
